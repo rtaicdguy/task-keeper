@@ -2,12 +2,11 @@ const formData = require('form-data')
 const Mailgun = require('mailgun.js')
 const mailgun = new Mailgun(formData)
 
-const key='eb552d8e361783c9e9c47d851d3e9e4e-4f207195-2f40ab59'
-const domain='sandbox397d1f395a9944c5b26f4dc972a426cf.mailgun.org'
-
+const key=process.env.API
+const domain=process.env.DOMAIN
 const mg = mailgun.client({
 	username: 'api',
-	key
+	key: key
 });
 
 const sendWelcomeEmail=async(email,name)=>{
